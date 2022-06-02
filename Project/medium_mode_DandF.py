@@ -43,7 +43,7 @@ def drawSpeechLegend(WIN):
 
 def speechRecognition(WIN):
     WIN.fill((0,0,0))
-    font = pygame.font.SysFont('comicsansms', 20)
+    font = pygame.font.SysFont('comicsansms', 35)
     text = font.render('Calibrating...', True, (255,255,255))
     WIN.blit(text, text.get_rect(center = (WIDTH/2, HEIGHT/2)))
     pygame.display.update()
@@ -54,7 +54,9 @@ def speechRecognition(WIN):
     
     run = True
     answer = '' #answer in number form
-    with m as source: r.adjust_for_ambient_noise(source)
+    #with m as source: r.adjust_for_ambient_noise(source)
+    with m as source: r.energy_threshold = 6000
+    with m as source: r.pause_threshold = 1
     WIN.fill((0,0,0))
     text = font.render("Ready!", True, (255,255,255))
     WIN.blit(text, text.get_rect(center = (WIDTH/2, HEIGHT/2)))
@@ -76,7 +78,7 @@ def speechRecognition(WIN):
                 answer = answer + '0'
             elif(i == 'bravo' or i == 'Bravo'):
                 answer = answer + '1'
-            elif(i == 'charlie' or i == 'Charlie'):
+            elif(i == 'charlie' or i == 'Charlie' or i == 'Charmy' or i == 'charmy' or i == 'Carly' or i == 'carlie'):
                 answer = answer + '2'
             elif(i == 'delta' or i == 'Delta'):
                 answer = answer + '3'

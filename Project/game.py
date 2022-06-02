@@ -96,7 +96,7 @@ class Game:
     def move(self):
         self.oldSpot = self.spots[self.currPlayer]
         self.spots[self.currPlayer] += self.currRoll
-        if self.spots[self.currPlayer] >= self.boardH*self.boardW:
+        if self.spots[self.currPlayer] >= self.boardH*self.boardW - 1:
             self.phase = 'end'
             self.winner = self.currPlayer
         self.correct = False
