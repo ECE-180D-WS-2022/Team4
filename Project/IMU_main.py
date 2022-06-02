@@ -64,7 +64,7 @@ pygame.font.init()
 font = pygame.font.SysFont('comicsansms', 48)
 
 def main(WIN, roll_num):   #accepts roll number as arguement
-
+	ans_str = ''
 	client = mqtt.Client('hopefullythisisauniqueclientname12345678901234567890123')  #client name is irrelevant
 	client.on_connect = on_connect
 	client.on_message = on_message
@@ -73,7 +73,6 @@ def main(WIN, roll_num):   #accepts roll number as arguement
 
 
 	global xang
-	global ans_str
 	count = 1
 	ans = ''
 

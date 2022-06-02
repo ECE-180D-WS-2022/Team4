@@ -41,7 +41,7 @@ def tutorial(WIN):
 
     game.setRoll(3)
 
-    # pygame.mixer.music.play(-1)
+    pygame.mixer.music.play(-1)
     # msg = 'Welcome to PitchPerfect.io!'
     # drawMsg(WIN, msg)
     
@@ -82,6 +82,9 @@ def tutorial(WIN):
     # msg = "Now say the military alphabet name of each note."
     # drawMsg(WIN, msg, 'Keyboard')
 
+    # msg = "Say one letter, then wait for the display to say the next."
+    # drawMsg(WIN, msg, 'Keyboard')
+
     # game.reset()
     # game.setMode('Speech')
     # pygame.mixer.music.pause()
@@ -105,6 +108,7 @@ def tutorial(WIN):
     drawMsg(WIN, msg)
 
     game.reset()
+    game.updateSol()
     game.setMode('IMU')
     pygame.mixer.music.pause()
     Client.playSound(WIN, game)
