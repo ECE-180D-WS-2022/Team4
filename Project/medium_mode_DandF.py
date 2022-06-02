@@ -80,9 +80,9 @@ def speechRecognition(WIN):
                 answer = answer + '1'
             elif(i == 'charlie' or i == 'Charlie' or i == 'Charmy' or i == 'charmy' or i == 'Carly' or i == 'carlie'):
                 answer = answer + '2'
-            elif(i == 'delta' or i == 'Delta'):
+            elif(i == 'delta' or i == 'Delta' or i == 'ulta' or i == 'Ulta'):
                 answer = answer + '3'
-            elif(i == 'echo' or i == 'Echo'):
+            elif(i == 'echo' or i == 'Echo' or i == 'geico' or i == 'Geico'):
                 answer = answer + '4'
             elif(i == 'foxtrot' or i == 'Foxtrot'):
                 answer = answer + '5'

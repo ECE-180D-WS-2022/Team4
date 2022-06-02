@@ -39,6 +39,7 @@ pygame.display.set_caption("Client")
 MODES = ['Keyboard', 'Camera', 'Speech', 'IMU']
 SOUNDS = ['Notes/A3.wav', 'Notes/B3.wav', 'Notes/C4.wav', 'Notes/D4.wav', 'Notes/E4.wav', 'Notes/F4.wav', 'Notes/G4.wav']
 LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+rolls = ['zero', 'one', 'two', 'three', 'four', 'five', 'six']
 
 red=pygame.image.load("Archive/red.jpg")
 yellow=pygame.image.load("Archive/yellow.jpg")
@@ -360,8 +361,8 @@ def main():
                 if game.currPlayer == player:
                     if not ROLLED:
                         roll = random.randint(1, 6)
-                        print(str(roll))
-                        n.send(str(roll))
+                        print(rolls[roll])
+                        n.send(rolls[roll])
                         drawDiceRoll(WIN, roll)
                 # else:
                 #     if game.rolled:
@@ -373,6 +374,7 @@ def main():
                     n.send('dice')
             elif game.phase == 'turn':
                 if game.currPlayer == player:
+                    pygame.time.delay(60)
                     if not game.went:
                         pygame.mixer.music.pause()
                         playSound(WIN, game)

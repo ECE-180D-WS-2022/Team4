@@ -2,6 +2,7 @@
 import os
 import random
 modes = ['Keyboard', 'Camera', 'Speech', 'IMU']
+rolls = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6}
 
 class Game:
     def __init__(self, id):
@@ -36,7 +37,7 @@ class Game:
 
     def newRoll(self, num):
         print("NEWROLL " + num)
-        num = int(num)
+        num = rolls[num]
         self.currRoll = num
         self.rolled = True
         if self.spots[self.currPlayer] + self.currRoll < self.boardH*self.boardW:
@@ -72,6 +73,19 @@ class Game:
         print(self.melody)
         print(self.sol)
 
+    def updateSol(self):
+        self.sol = ''
+        relation = [0 for i in range(self.currRoll - 1)]
+        for i in range(self.currRoll - 1):
+            relation[i] = self.melody[i+1] - self.melody[i]
+        self.sol = ''
+        for i in range(len(relation)):
+            if relation[i] < 0:
+                self.sol += 'v'
+            elif relation[i] == 0:
+                self.sol += '>'
+            elif relation[i] > 0:
+                self.sol += '^'
 
     def nextPhase(self, phase):
         if phase == 'board':
@@ -115,6 +129,8 @@ class Game:
             
 
     def check(self, ans):
+        if self.currMode == 'IMU':
+            self.updateSol()
         if ans == self.sol:
             self.correct = True
             print("Correct!")
