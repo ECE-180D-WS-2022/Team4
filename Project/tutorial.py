@@ -38,69 +38,73 @@ def drawMsg(WIN, msg, background = ''):
 
 
 def tutorial(WIN):
-    pygame.mixer.music.play(-1)
-    msg = 'Welcome to PitchPerfect.io!'
-    drawMsg(WIN, msg)
-    
-    msg = 'Traverse through the board to win.'
-    drawMsg(WIN, msg, 'Board')
 
-    msg = 'Roll a die and win the corresponding minigame to move.'
-    drawMsg(WIN, msg, 'Board')
-
-    msg = 'Minigame mode depends on the color of your current spot.'
-    drawMsg(WIN, msg, 'Board')
-
-    msg = 'Minigame length is your die roll.'
-    drawMsg(WIN, msg, 'Dice')
-
-    msg = "Now let's try each minigame!"
-    drawMsg(WIN, msg)
-
-    msg = "Minigames start with a melody, remember each note."
-    drawMsg(WIN, msg, 'Keyboard')
-    
-    game.setMode('Camera')
     game.setRoll(3)
-    pygame.mixer.music.pause()
-    Client.playSound(WIN, game)
 
-    msg = "Copy the melody on the keyboard with your index finger."
-    drawMsg(WIN, msg, 'Keyboard')
+    # pygame.mixer.music.play(-1)
+    # msg = 'Welcome to PitchPerfect.io!'
+    # drawMsg(WIN, msg)
+    
+    # msg = 'Traverse through the board to win.'
+    # drawMsg(WIN, msg, 'Board')
 
-    ans = Client.playGame(game, WIN)
-    pygame.mixer.music.unpause()
-    game.check(ans)
-    if game.correct:
-        msg = "Correct!"
-    else:
-        msg = "Incorrect."
-    drawMsg(WIN, msg)
+    # msg = 'Roll a die and win the corresponding minigame to move.'
+    # drawMsg(WIN, msg, 'Board')
 
-    msg = "Now say the military alphabet name of each note."
-    drawMsg(WIN, msg, 'Keyboard')
+    # msg = 'Minigame mode depends on the color of your current spot.'
+    # drawMsg(WIN, msg, 'Board')
 
-    game.setMode('Speech')
-    pygame.mixer.music.pause()
-    Client.playSound(WIN, game)
-    ans = Client.playGame(game, WIN)
-    pygame.mixer.music.unpause()
-    game.check(ans)
-    if game.correct:
-        msg = "Correct!"
-    else:
-        msg = "Incorrect."
-    drawMsg(WIN, msg)
+    # msg = 'Minigame length is your die roll.'
+    # drawMsg(WIN, msg, 'Dice')
 
-    msg = "Now try following the pitch by moving the controller."
-    drawMsg(WIN, msg)
+    # msg = "Now let's try each minigame!"
+    # drawMsg(WIN, msg)
 
-    msg = "If a note is higher than the previous note, rotate upward."
-    drawMsg(WIN, msg)
+    # msg = "Minigames start with a melody, remember each note."
+    # drawMsg(WIN, msg, 'Keyboard')
+    
+    # game.setMode('Camera')
+    # pygame.mixer.music.pause()
+    # Client.playSound(WIN, game)
+
+    # msg = "Copy the melody on the keyboard with your index finger."
+    # drawMsg(WIN, msg, 'Keyboard')
+
+    # ans = Client.playGame(game, WIN)
+    # pygame.mixer.music.unpause()
+    # game.check(ans)
+    # if game.correct:
+    #     msg = "Correct!"
+    # else:
+    #     msg = "Incorrect."
+    # drawMsg(WIN, msg)
+
+    # msg = "Now say the military alphabet name of each note."
+    # drawMsg(WIN, msg, 'Keyboard')
+
+    # game.reset()
+    # game.setMode('Speech')
+    # pygame.mixer.music.pause()
+    # Client.playSound(WIN, game)
+    # ans = Client.playGame(game, WIN)
+    # pygame.mixer.music.unpause()
+    # game.check(ans)
+    # if game.correct:
+    #     msg = "Correct!"
+    # else:
+    #     msg = "Incorrect."
+    # drawMsg(WIN, msg)
+
+    # msg = "Now try following the pitch by moving the controller."
+    # drawMsg(WIN, msg)
+
+    # msg = "If a note is higher than the previous note, rotate upward."
+    # drawMsg(WIN, msg)
 
     msg = "If a note is lower than the previous note, rotate downward."
     drawMsg(WIN, msg)
 
+    game.reset()
     game.setMode('IMU')
     pygame.mixer.music.pause()
     Client.playSound(WIN, game)

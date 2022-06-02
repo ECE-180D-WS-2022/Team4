@@ -115,7 +115,7 @@ def playGame(game, WIN):
         if game.currMode == 'Keyboard':
             game.currAnswer = input('^, >, v')
         elif game.currMode == 'IMU':
-            game.currAnswer = IMU_main.main()
+            game.currAnswer = IMU_main.main(WIN, game.currRoll)
         elif game.currMode == 'Camera':
             game.currAnswer = camera.camera(game.currRoll, 7)
         elif game.currMode == 'Speech':
