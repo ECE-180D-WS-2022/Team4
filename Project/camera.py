@@ -3,8 +3,9 @@ from pickle import FALSE, TRUE
 import cv2
 import mediapipe as mp
 from typing import NamedTuple
+import pygame
 
-def camera(str_length, keyboard_size):
+def camera(WIN, str_length, keyboard_size):
     mp_drawing = mp.solutions.drawing_utils
     mp_drawing_styles = mp.solutions.drawing_styles
     mp_hands = mp.solutions.hands
@@ -26,7 +27,7 @@ def camera(str_length, keyboard_size):
         min_detection_confidence=0.5,
         min_tracking_confidence=0.5) as hands:
         while cap.isOpened():
-            
+            WIN.fill([0,0,0])
             success, image = cap.read()
             if not success:
                 print("Ignoring empty camera frame.")
@@ -156,9 +157,17 @@ def camera(str_length, keyboard_size):
                 break
 
             # Flip the image horizontally for a selfie-view display.
-            cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
+            #cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
             if cv2.waitKey(5) & 0xFF == 27:
                 break
+
+            #image = cv2.flip(image, 1)
+            surf = pygame.surfarray.make_surface(image)
+
+            new_surf = pygame.transform.rotate(surf, 270)
+            #new_rect = new_surf.get_rect(center = surf.get_rect(topleft = (0,0)).center)
+            WIN.blit(new_surf, (0,0))
+            pygame.display.update()
 
     ans = ''
     for i in range(len(arr)):
