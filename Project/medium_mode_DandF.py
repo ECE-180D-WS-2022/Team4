@@ -55,7 +55,7 @@ def speechRecognition(WIN):
     run = True
     answer = '' #answer in number form
     #with m as source: r.adjust_for_ambient_noise(source)
-    with m as source: r.energy_threshold = 6000
+    with m as source: r.energy_threshold = 5000
     with m as source: r.pause_threshold = 1
     WIN.fill((0,0,0))
     text = font.render("Ready!", True, (255,255,255))

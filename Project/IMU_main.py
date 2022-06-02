@@ -20,8 +20,8 @@ ans_str = ''      #empty string for returned answers
 xang=[0] * 100   #sets array to 100 zeroes (this is due to not wanting to trigger break statement when there are only three elements in array)
 
 arrow = pygame.image.load("Archive/white-arrow.png")
-up = pygame.transform.scale(arrow, (250, 500))
-down = pygame.transform.flip(arrow, False, True)
+up = pygame.transform.scale(arrow, (100, 200))
+down = pygame.transform.flip(up, False, True)
 images = {'^': up, 'v': down}
 
 def on_connect(client, userdata, flags, rc):
@@ -60,7 +60,8 @@ def on_message(client, userdata, message):
 	xang.append(message_int)   #adds most recent IMU reading to array
 	#print(message_int)
 
-
+pygame.font.init()
+font = pygame.font.SysFont('comicsansms', 48)
 
 def main(WIN, roll_num):   #accepts roll number as arguement
 
@@ -77,11 +78,21 @@ def main(WIN, roll_num):   #accepts roll number as arguement
 	ans = ''
 
 	while count <= roll_num:
-
+		WIN.fill((0,0,0))
+		msg = "Reset hand to neutral position."
+		text = font.render(msg, False, (255,255,255))
+		rect = text.get_rect(center = (1400/2, 800/2))
+		WIN.blit(text, rect)
+		pygame.display.update()
 		print('reset hand to neutral position')
 
 		time.sleep(3)				#wait three seconds at start and before going again (can be changed as needed)
-
+		WIN.fill((0,0,0))
+		msg = "Start moving hand."
+		text = font.render(msg, False, (255,255,255))
+		rect = text.get_rect(center = (1400/2, 800/2))
+		WIN.blit(text, rect)
+		pygame.display.update()
 		print('start moving hand')
 
 		#timeout = 100         							 #only needed if using runtime errors
@@ -115,6 +126,8 @@ def main(WIN, roll_num):   #accepts roll number as arguement
 		im = images[ans]
 		WIN.fill((0,0,0))
 		WIN.blit(im, im.get_rect(center = (700, 400)))
+		pygame.display.update()
+		pygame.time.delay(1000)
 		print('answer was ' + ans)
 
 		xang.clear()       #clear the queue of past data
