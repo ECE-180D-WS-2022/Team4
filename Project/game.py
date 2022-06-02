@@ -19,7 +19,7 @@ class Game:
         self.spots = [0, 0]
         self.currAnswer = ''
         self.currRoll = 0
-        self.currMode = 'Keyboard'
+        self.currMode = modes[self.board[(self.spots[0])//self.boardH][(self.spots[0])%self.boardH]]
         self.sol = ''
         self.melody = [0]
         self.winner = 0
